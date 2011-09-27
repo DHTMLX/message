@@ -1,0 +1,163 @@
+/* Page */
+body {
+	background: #333333 url('../images/page-background.png') repeat top left;
+	font-family: arial,sans-serif;
+}
+
+/* Header */
+header {
+	padding-top: 50px;
+	border-bottom: 2px solid #77746C;
+	padding-bottom: 28px;
+}
+
+/* Footer */
+footer {
+	background-color: #FFFFFF;
+	margin-top: 50px;
+	-webkit-box-shadow: -10px 0 15px #000000;
+	-moz-box-shadow: -10px 0 15px #000000;
+	box-shadow: -10px 0 15px #000000;
+}
+
+div.credits {
+	padding-top: 9px;
+	margin-top: 30px;
+	margin-bottom: 25px;
+	border-top: 1px solid #DDD2B2;
+	text-align: center;
+}
+
+footer p {
+	color: #333333;
+}
+
+div.repo-author {
+	padding-top: 30px;
+}
+
+/* Text */
+p {
+	color: #CCCCCC;
+	font-size: 14px;
+}
+
+a {
+	color: #0075B6;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #0075B6;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1, h2 {
+	font-family: georgia,serif;
+}
+
+h1 {
+	font-style: italic;
+	color: #FFFFFF;
+	font-size: 50px;
+	margin: 0;
+}
+
+h2 {
+	color: #CCCCCC;
+	font-size: 20px;
+	line-height: 23px;
+	padding-top: 15px;
+}
+
+h3, h4 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: inherit;
+}
+
+h3 {
+	font-size: 28px;
+	margin-top: 40px;
+}
+
+h4 {
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+/* Useful classes and styles */
+a.github-ribbon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 0;
+}
+
+a.download-button {
+	display: block;
+	padding: 15px 20px 10px 20px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
+	background: #33A700 url('../images/github-logo.png') no-repeat 92% 50%;
+	border: 2px solid #339410;
+	-webkit-box-shadow: 3px 3px 5px #000000;
+	-moz-box-shadow: 3px 3px 5px #000000;
+	box-shadow: 3px 3px 5px #000000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition: 350ms;
+	-moz-transition: 350ms;
+	-o-transition: 350ms;
+	transition: 350ms;
+}
+
+a.download-button:hover {
+	background-color: #267C00;
+	background-position: 90% 50%;
+}
+
+a.download-button span {
+	font-size: 14px;
+	display: block;
+	margin-top: 2px;
+}
+
+code {
+	margin-top: 15px;
+	min-height: 220px;
+	border: 3px solid #FFFFFF;
+	background-color: #CCCC99;
+	display: block;
+	padding: 20px;
+	font-family: monospace;
+	-webkit-box-shadow: 3px 3px 5px #000000;
+	-moz-box-shadow: 3px 3px 5px #000000;
+	box-shadow: 3px 3px 5px #000000;
+	overflow-x: auto;
+}
+
+pre.prettyprint {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+img.repo-author-logo {
+	float: left;
+	margin-right: 15px;
+}
+
+/* Media queries */
+/* Hide the ribbon when we are on a phone, screen is too small */
+@media only screen and (max-width: 479px) {
+	a.github-ribbon {
+		display: none;
+	}
+}
