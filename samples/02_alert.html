@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/message.css">
+	<style type="text/css">
+		body, html {
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		dhtmlx.alert("Test alert", function(result){
+			dhtmlx.alert({
+				title:"Custom title",
+				ok:"Custom text",
+				text:"Result: "+result,
+				callback:function(){
+					dhtmlx.alert({
+						type:"alert-warning",
+						text:"Warning",
+						callback:function(){
+							dhtmlx.alert({
+								type:"alert-error",
+								text:"Error"
+							});
+						}
+					});
+				}
+			});
+		});
+	</script>	
+</body>
+</html>
