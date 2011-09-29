@@ -8,6 +8,7 @@
 			modality.cover.className = "dhx_modal_cover";
 			document.body.appendChild(modality.cover);
 		}
+		var height =  document.body.scrollHeight;
 		modality.cover.style.display = mode?"inline-block":"none";
 	}
 
@@ -68,8 +69,8 @@
 
 		modality(true);
 		document.body.appendChild(box);
-		var x = Math.abs(Math.floor((document.body.clientWidth - box.offsetWidth)/2));
-		var y = Math.abs(Math.floor((document.body.clientHeight - box.offsetHeight)/2));
+		var x = Math.abs(Math.floor(((window.innerWidth||document.documentElement.offsetWidth) - box.offsetWidth)/2));
+		var y = Math.abs(Math.floor(((window.innerHeight||document.documentElement.offsetHeight) - box.offsetHeight)/2));
 		box.style.top = y+'px';
 		box.style.left = x+'px';
 	}
@@ -137,7 +138,7 @@
 
 	t.seed = (new Date()).valueOf();
 	t.uid = function(){return t.seed++;};
-	t.defTimeout = 5000;
+	t.defTimeout = 4000;
 	t.defPosition = "top";
 	t.pull = {};
 	t.timers = {};
