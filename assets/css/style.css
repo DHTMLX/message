@@ -1,4 +1,19 @@
 /* Page */
+.dhtmlx-error{
+	font-weight:bold;
+	color:white;
+	background-color:red;
+}
+
+a.dhtmlx, a.dhtmlx:visited, a.dhtmlx:hover{
+	color: #0075B6;
+}
+
+strong.dhtmlx{
+	font-weight:bold;
+	color: #FFF;
+}
+
 body {
 	background: #333333 url('../images/page-background.png') repeat top left;
 	font-family: arial,sans-serif;

@@ -18,7 +18,9 @@
 			<header class='sixteen columns'>
 				<div class='nine columns alpha'>
 					<h1>js Message </h1>
-					<h2>Custom messages, alerts, confirmations</h2>
+					<h2>Custom notifications, alerts, confirmations</h2>
+					<p>This library was extracted from the code of <a class="dhtmlx" href='http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message'> DHTMLX suite </a>.<br> The library can be used under terms of <strong class="dhtmlx">MIT</strong> license. (basically free)<br>
+					Only <strong class="dhtmlx">3kb</strong> gzipped, without external dependencies.</p>
 				</div>
 				
 				<div class='six columns offset-by-one omega'>
@@ -30,42 +32,48 @@
 			</header>
 			
 			<div class='sixteen columns'>
-				<h3>Usage and examples</h3>
+				<h3>Examples</h3>
 				
 				<div class='eight columns alpha'>
 					<code>
 <pre class='prettyprint'>
-function codeExample() {
-	console.log('This is a code example.');
-}
+dhtmlx.confirm({
+    type:"confirm",
+    text: "Continue?",
+    callback: function(result){
+        dhtmlx.message("Result: "+result);
+    }
+});
+//or
+dhtmlx.confirm("Continue?");
 </pre>
 					</code>
-					
-					<h4>Example number 1</h4>
-					<p>Some example code here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia, enim quis interdum accumsan, odio velit ultricies lectus, sit amet pellentesque eros velit.</p>
 				</div>
 				
 				<div class='eight columns omega'>
 					<code>
 <pre class='prettyprint'>
-function codeExample() {
-	console.log('This is a code example.');
-}
+dhtmlx.alert({
+    text: "Download is completed.",
+    callback: function(){
+        dhtmlx.message("Alert clicked");
+    }
+});
+
+//or
+dhtmlx.alert("Download is completed.");
 </pre>
 					</code>
-					
-					<h4>Example number 2</h4>
-					<p>Some example code here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia, enim quis interdum accumsan, odio velit ultricies lectus, sit amet pellentesque eros velit venenatis leo. Morbi lacinia tempor metus in viverra.</p>
 				</div>
 			</div>
 			
 			<div class='sixteen columns'>
 				<h3>See it in action</h3>
         <br>
-				<div><input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'></div>
-        <div><input type='button' value='Show message with custom style' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'> </div>
-        <div><input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'> </div>
-        <div><input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'>  </div>
+		<div><input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'>
+        	 <input type='button' value='Show message with custom style' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'> </div>
+        <div><input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'>
+        	 <input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'>  </div>
 
 			</div>
 		</div>
@@ -76,7 +84,7 @@ function codeExample() {
 					<a href='http://dhtmlx.com'><img src='./assets/logo.png' class='repo-author-logo' /></a>
 					
 					<p>
-						<a href='http://dhtmlx.com'>DHTMLX</a> is a JavaScript library that provides essential functionality for building cross-browser, Ajax-based user interfaces. Develop impressive web applications faster with a set of ready-to-use UI widgets.
+						<a href='http://dhtmlx.com?message'>DHTMLX</a> is a JavaScript library that provides essential functionality for building cross-browser, Ajax-based user interfaces. Develop impressive web applications faster with a set of ready-to-use UI widgets.
 					</p>
 				</div>
 				
