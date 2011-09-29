@@ -1,9 +1,20 @@
-Message
-=======
+jsMessage
+=========
 
-Message is a helper that simplifies creating of different message windows.
+Custom notifications, alerts, confirmations
 
-dhtmlxMessage offers 7 message window variations at your disposal (3 main types and a few subtypes):
+This library was extracted from code of [DHTMLX suite][dhtmlx].
+
+Library can be used under terms of [MIT license][mit] (basically **free**) .
+
+Only **3kb** gzipped, without external dependencies.
+
+Works in FF, Chrome, Safari (including iPhone), Opera, IE7+
+
+Supported message types
+-----------------------
+
+jsMessage offers 7 message window variations at your disposal (3 main types and a few subtypes):
 
 - alert
   - alert (default)
@@ -147,3 +158,22 @@ Options
 ```javascript
 	dhtmlx.message("Your data has been successfully saved!");
 ```
+
+Extra configuration
+-------------------
+
+Default delay of notices can be set as
+
+```javascript
+	dhtmlx.message.defTimeout = 4000; //time in milliseconds
+	t.defPosition = "top";	
+```
+
+Default position of notices can be set as
+
+```javascript
+	dhtmlx.message.defPosition = "top";	 // possible values "top" or "bottom"
+```
+
+[dhtmlx]: http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message
+[mit]: http://en.wikipedia.org/wiki/MIT_License
