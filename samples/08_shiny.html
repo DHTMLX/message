@@ -10,14 +10,13 @@
 			.dhtmlx-info, .dhtmlx-error{
 				font-size:15px;
 				color:#000;
-				box-shadow: 0px 0px 4px #000;
+				box-shadow: 0px 0px 4px #fff;
 				margin-bottom:10px;
 
 				background-color:#fff;
 			  
 				border-radius:5px;
 				border:2px solid #000;
-				box-shadow: 0px 0px 5px rgba(255,255,255,0.8);
 			}
 			.dhtmlx-error{
 				background-color:#F00;
@@ -26,7 +25,7 @@
 
 			.dhtmlx-alert, .dhtmlx-confirm{
 				border-radius:6px;
-				box-shadow: 0px 0px 5px #fff;
+				box-shadow: 0px 0px 4px #fff;
 			}
 			.dhtmlx-alert .dhtmlx_popup_title, .dhtmlx-confirm .dhtmlx_popup_title{
 				background:#222;
@@ -87,6 +86,8 @@
 	<br>
 	<input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'> 
 	<input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'> 
+	<input type='button' value='Show alert with title' onclick='dhtmlx.alert({title:"The result", text:"Done!"})'> 
+	<input type='button' value='Show confirm with title' onclick='dhtmlx.confirm({ title: "The question", text:"Was it simple?"})'> 
 
 	<script type="text/javascript">
 	var num = 1;

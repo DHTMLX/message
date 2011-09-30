@@ -52,8 +52,11 @@
 	function _createBox(config, ok, cancel){
 		var box = document.createElement("DIV");
 		box.className = " dhtmlx_modal_box dhtmlx-"+config.type;
-
-		var inner = '<div class="dhtmlx_popup_title">'+config.title+'</div><div class="dhtmlx_popup_text"><span>'+config.text+'</span></div><div  class="dhtmlx_popup_controls">';
+			
+		var inner = '';
+		if (config.title)
+			inner+='<div class="dhtmlx_popup_title">'+config.title+'</div>';
+		inner+='<div class="dhtmlx_popup_text"><span>'+config.text+'</span></div><div  class="dhtmlx_popup_controls">';
 		if (ok)
 			inner += button(config.ok || "Ok", true);
 		if (cancel)
@@ -89,11 +92,9 @@
 		};
 	}
 	function alertPopup(config){
-		config.title = config.title || "Alert";
 		var box = _createBox(config, true, false);
 	}
 	function confirmPopup(config){
-		config.title = config.title || "Confirm";
 		var box = _createBox(config, true, true);
 	}
 	function box_params(text, type, callback){

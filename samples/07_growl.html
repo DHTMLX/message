@@ -25,6 +25,7 @@
 
 			.dhtmlx-alert, .dhtmlx-confirm{
 				border-radius:6px;
+			
 			}
 			.dhtmlx-alert .dhtmlx_popup_title, .dhtmlx-confirm .dhtmlx_popup_title{
 				background:#222;
@@ -44,6 +45,7 @@
 				font-size:18px;
 				color:#000;
 				min-height:30px;
+				border-radius:6px;
 			}
 			.dhtmlx-alert .dhtmlx_popup_button, .dhtmlx-confirm .dhtmlx_popup_button{
 				background:#222;
@@ -83,6 +85,8 @@
 	<br>
 	<input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'> 
 	<input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'> 
+	<input type='button' value='Show alert with title' onclick='dhtmlx.alert({title:"The result", text:"Done!"})'> 
+	<input type='button' value='Show confirm with title' onclick='dhtmlx.confirm({ title: "The question", text:"Was it simple?"})'> 
 
 	<script type="text/javascript">
 	var num = 1;
