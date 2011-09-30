@@ -20,7 +20,7 @@
 		if (!t.area){
 			t.area = document.createElement("DIV");
 			t.area.className = "dhtmlx_message_area";
-			t.area.style[t.defPosition]="5px";
+			t.area.style[t.position]="5px";
 			document.body.appendChild(t.area);
 		}
 
@@ -28,17 +28,23 @@
 		var message = document.createElement("DIV");
 		message.innerHTML = text.text;
 		message.className = "dhtmlx-info dhtmlx-" + text.type;
+		message.onclick = function(){
+			t.hide(text.id);
+			text = null;
+		}
 
-		if (t.defPosition == "bottom" && t.area.firstChild)
+		if (t.position == "bottom" && t.area.firstChild)
 			t.area.insertBefore(message,t.area.firstChild);
 		else
 			t.area.appendChild(message);
-
-		t.timers[text.id]=window.setTimeout(function(){
-			t.hide(text.id);
-		}, text.lifetime);
+		
+		if (text.expire > 0)
+			t.timers[text.id]=window.setTimeout(function(){
+				t.hide(text.id);
+			}, text.expire);
 
 		t.pull[text.id] = message;
+		message = null;
 
 		return text.id;
 	}
@@ -100,11 +106,11 @@
 		}
 		return text;
 	}
-	function params(text, type, lifetime, id){
+	function params(text, type, expire, id){
 		if (typeof text != "object")
-			text = {text:text, type:type, lifetime:lifetime, id:id};
+			text = {text:text, type:type, expire:expire, id:id};
 		text.id = text.id||t.uid();
-		text.lifetime = text.lifetime||t.defTimeout;
+		text.expire = text.expire||t.expire;
 		return text;
 	}
 	dhtmlx.alert = function(){
@@ -118,7 +124,7 @@
 		text.type = text.type || "alert";
 		confirmPopup(text);
 	};
-	var t = dhtmlx.message = function(text, type, lifetime, id){
+	var t = dhtmlx.message = function(text, type, expire, id){
 		text = params.apply(this, arguments);
 		text.type = text.type||"info";
 
@@ -138,8 +144,8 @@
 
 	t.seed = (new Date()).valueOf();
 	t.uid = function(){return t.seed++;};
-	t.defTimeout = 4000;
-	t.defPosition = "top";
+	t.expire = 4000;
+	t.position = "top";
 	t.pull = {};
 	t.timers = {};
 

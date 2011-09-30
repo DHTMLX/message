@@ -141,14 +141,14 @@ Options
 
 - type - the subtype of the window or a custom css class. The default value for the window - 'alert'.
 - text - (string) the text of the window body.
-- lifetime - the time after passing which the window disappears (in milliseconds).
+- expire - the time after passing which the window disappears (in milliseconds). You can use negative value (-1) to make notice persistent. 
 
 **Full form**
 
 ```javascript
 	dhtmlx.message({
 		text:"An error has occured.<br /> Please, see the log file!",
-		lifetime:1000,
+		expire:1000, You can use negative value (-1) to make notice persistent. 
 		type:"customCss" // 'customCss' - css class
 	});
 ```
@@ -165,14 +165,14 @@ Extra configuration
 Default delay of notices can be set as
 
 ```javascript
-	dhtmlx.message.defTimeout = 4000; //time in milliseconds
-	t.defPosition = "top";	
+	dhtmlx.message.expire = 4000; //time in milliseconds
+	t.position = "top";	
 ```
 
 Default position of notices can be set as
 
 ```javascript
-	dhtmlx.message.defPosition = "top";	 // possible values "top" or "bottom"
+	dhtmlx.message.position = "top";	 // possible values "top" or "bottom"
 ```
 
 [dhtmlx]: http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message
