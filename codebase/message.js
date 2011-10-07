@@ -13,7 +13,7 @@
 	}
 
 	function button(text, callback){
-		return "<span class='dhtmlx_popup_button' "+(callback?"result='true' ":"")+">"+text+"</span>";
+		return "<div class='dhtmlx_popup_button' "+(callback?"result='true' ":"")+"><div>"+text+"</div></div>";
 	}
 
 	function info(text){
@@ -26,7 +26,7 @@
 
 		t.hide(text.id);
 		var message = document.createElement("DIV");
-		message.innerHTML = text.text;
+		message.innerHTML = "<div>"+text.text+"</div>";
 		message.className = "dhtmlx-info dhtmlx-" + text.type;
 		message.onclick = function(){
 			t.hide(text.id);
@@ -67,7 +67,7 @@
 		box.onclick = function(e){
 			e = e ||event;
 			var source = e.target || e.srcElement;
-			if (source.className == "dhtmlx_popup_button"){
+			if (source.className == "dhtmlx_popup_button" || source.parentNode.className == "dhtmlx_popup_button"){
 				if (config.callback)
 					config.callback.call(window, source.getAttribute("result") == "true");
 				modality(false);

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/message.css">
+	<style type="text/css">
+		/*Dark theme*/
+				.dhtmlx-info, .dhtmlx-error{
+				font-size:14px;
+				color:#000;
+				box-shadow: 0px 0px 10px #888;
+				margin-bottom:10px;
+				padding:0px;
+				
+			  	background-color:#FFF;
+				border-radius:3px;
+				border:1px solid #ffffff;
+			}
+			.dhtmlx-info div{
+				padding:5px 10px 5px 10px;
+				background-color: #fff;
+
+				border-radius:3px;
+				border:1px solid #B8B8B8;
+			}
+			.dhtmlx-error{
+				background-color: #d81b1b;
+				border:1px solid #ff3c3c;
+				box-shadow: 0px 0px 10px #000;
+			}
+			.dhtmlx-error div{
+				background-color: #d81b1b;	
+				border:1px solid #940000;
+				color:#FFF;
+			}
+
+			.dhtmlx-alert, .dhtmlx-confirm{
+				border-radius:6px;
+				border: 1px solid #ffffff;
+				background:-webkit-linear-gradient(top, #ffffff 1%, #d0d0d0 99%);
+				box-shadow: 0px 0px 7px #444;
+			}
+			.dhtmlx-alert .dhtmlx_popup_title, .dhtmlx-confirm .dhtmlx_popup_title{
+				background:#222;
+				font-family:Tahoma;
+				color:#fff;
+				text-shadow: 1px 1px #000;
+				height:40px; line-height:40px;
+				font-size:20px;
+				border-top-left-radius:5px;
+				border-top-right-radius:5px;
+				border-width:0px;
+
+				background-image: -webkit-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 97%, #393939 97%);
+			}
+			.dhtmlx-alert .dhtmlx_popup_text, .dhtmlx-confirm .dhtmlx_popup_text{
+				font-size:18px;
+				color:#000;
+				min-height:30px;
+				border-radius:6px;
+				padding-top:18px !important;
+				padding-bottom:18px !important;
+			}
+			.dhtmlx-alert .dhtmlx_popup_button, .dhtmlx-confirm .dhtmlx_popup_button{
+				color:#FFF;
+				font-weight:normal;
+				text-shadow:none;
+				box-shadow: 0px 0px 4px #888;
+
+				border-radius:6px;
+				margin-bottom:12px;
+				border:1px solid #838383;
+			}
+			.dhtmlx-alert .dhtmlx_popup_button div, .dhtmlx-confirm .dhtmlx_popup_button div{
+				border:1px solid #FFF;
+				background-image: -webkit-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 99%);
+				border-radius:6px;
+				font-size:15px;
+				height:28px;
+				line-height:28px;
+			}
+			.dhtmlx_popup_controls{
+				border-radius:6px;
+				padding:5px !important;
+			}
+		/**/
+		body, html {
+			height:100%;
+		}
+		input{
+			width:300px;
+			display:block;
+			font-family:Tahoma;
+			font-size:12pt;
+			padding:5px 20px;
+		}
+	</style>
+</head>
+<body>
+	<input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'> 
+	<input type='button' value='Show message with custom style' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'> 
+	<br>
+	<input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'> 
+	<input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'> 
+	<input type='button' value='Show alert with title' onclick='dhtmlx.alert({title:"The result", text:"Done!"})'> 
+	<input type='button' value='Show confirm with title' onclick='dhtmlx.confirm({ title: "The question", text:"Was it simple?"})'> 
+
+	<script type="text/javascript">
+	var num = 1;
+	function show_message(){
+		var n = Math.random()*20;
+		if (n<15) return;
+
+		var message = {
+			text:"Message #"+(num++),
+			type:(n>18?"error":"")
+		}
+		dhtmlx.message(message);
+	}
+	for (var i = 0; i < 10; i++)
+		show_message();
+	window.setInterval(show_message, 500);
+	</script>
+</body>
+</html>
+
+
+
+
