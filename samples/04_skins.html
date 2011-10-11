@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_default.css" title="Default">
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_growl_dark.css" title="Growl - dark">
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_growl_shiny.css" title="Growl - shiny">
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_solid.css" title="Solid">
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_skyblue.css" title="SkyBlue">
+	<style type="text/css">
+		fieldset {
+			width:250px;
+			margin-top:10px;
+		}
+		fieldset input{
+			width:250px;
+			padding:7px 10px;
+		}
+		legend{
+			color:navy;
+			font-size:10pt;
+			font-family:Tahoma;
+		}
+
+		.dhtmlx-image{
+			line-height:30px;
+		}
+	</style>
+	<script type="text/javascript">
+	function setActiveStyleSheet(title){
+		var links = document.getElementsByTagName("link");
+		for (var i = 0; i < links.length; i++){
+			links[i].disabled = (links[i].getAttribute("title") != title);
+		}
+	}
+	setActiveStyleSheet("Default")
+	</script>
+</head>
+<body>
+	
+	
+	<fieldset>
+		<legend>Skin</legend>
+		<select onchange="setActiveStyleSheet(this.value);">
+			<option>Default
+			<option>Growl - dark
+			<option>Growl - shiny
+			<option>Solid
+			<option>SkyBlue
+		</select>
+	</fieldset>
+
+	<fieldset>
+		<legend>Message</legend>
+		<div><input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'> </div>
+		<div><input type='button' value='Show styled message' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'> </div>
+		<div><input type='button' value='Show rich content' onclick='rich_message();'> </div>
+	</fieldset>
+
+	<fieldset>
+		<legend>Alert</legend>
+		<div><input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'></div>
+		<div><input type='button' value='Show alert with title' onclick='dhtmlx.alert({title:"The result", text:"Done!"})'></div>
+		<div><input type='button' value='Show styled alert' onclick='dhtmlx.alert({type:"alert-error", title:"The result", text:"Done!"})'></div>
+		<div><input type='button' value='Show rich content' onclick='rich_alert();'></div>
+	</fieldset>
+
+	<fieldset>
+		<legend>Confirm</legend>
+		<div><input type='button' value='Show confirm' onclick='dhtmlx.confirm("Simple?")'></div>
+		<div><input type='button' value='Show confirm with title' onclick='dhtmlx.confirm({ title: "The question", text:"Was it simple?"})'> </div>
+		<div><input type='button' value='Show styled confirm' onclick='dhtmlx.confirm({type:"confirm-error", title:"The question", text:"Was it simple?"})'></div>
+		<div><input type='button' value='Show rich content' onclick='rich_confirm();'></div>
+	</fieldset>
+
+	
+	
+
+	<script type="text/javascript">
+	var num = 1;
+	function show_message(){
+		var n = Math.random()*20;
+		if (n<15) return;
+
+		var message = {
+			text:"Message #"+(num++),
+			type:(n>18?"error":"")
+		}
+		dhtmlx.message(message);
+	}
+	for (var i = 0; i < 10; i++)
+		show_message();
+	window.setInterval(show_message, 500);
+
+
+	function rich_confirm(){
+		dhtmlx.confirm("<img src='alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+	}
+	function rich_alert(){
+		dhtmlx.alert("<img src='alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+	}
+	function rich_message(){
+		dhtmlx.message({
+			text:"<img src='alert_small.png'> Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a>",
+			expire:-1,
+			type:"image"
+		});
+	}
+	</script>
+</body>
+</html>

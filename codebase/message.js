@@ -1,6 +1,7 @@
+if(!window.dhtmlx)
+	window.dhtmlx = {};
+
 (function(){
-	if(!window.dhtmlx)
-		window.dhtmlx = {};
 
 	function modality(mode){
 		if(!modality.cover){
@@ -58,7 +59,7 @@
 			inner+='<div class="dhtmlx_popup_title">'+config.title+'</div>';
 		inner+='<div class="dhtmlx_popup_text"><span>'+config.text+'</span></div><div  class="dhtmlx_popup_controls">';
 		if (ok)
-			inner += button(config.ok || "Ok", true);
+			inner += button(config.ok || "OK", true);
 		if (cancel)
 			inner += button(config.cancel || "Cancel", false);
 		inner += '</div>';
@@ -67,7 +68,8 @@
 		box.onclick = function(e){
 			e = e ||event;
 			var source = e.target || e.srcElement;
-			if (source.className == "dhtmlx_popup_button" || source.parentNode.className == "dhtmlx_popup_button"){
+			if (!source.className) source = source.parentNode;
+			if (source.className == "dhtmlx_popup_button"){
 				if (config.callback)
 					config.callback.call(window, source.getAttribute("result") == "true");
 				modality(false);
