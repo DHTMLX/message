@@ -53,7 +53,8 @@
 	border-top-right-radius:5px;
 
 	border-width:0px;
-	background-color: #4c4c4c;
+	
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAoCAMAAAAIaGBFAAAAhFBMVEVwcHBubm5sbGxqampoaGhmZmZlZWVjY2NhYWFfX19dXV1bW1taWlpYWFhWVlZUVFRSUlJRUVFPT09NTU1LS0tJSUlHR0dGRkZERERCQkJAQEA+Pj49PT09PT0+Pj5AQEBBQUFDQ0NERERGRkZHR0dJSUlKSkpMTExMTEw5OTk5OTk5OTkny8YEAAAAQklEQVQImQXBCRJCAAAAwKVSQqdyjSPXNP7/QLsIhA6OTiJnF7GrRCpzc/fw9PKW+/gqlCq1RqvTG/yMJrPF6m/bAVEhAxxnHG0oAAAAAElFTkSuQmCC);
 	background-image: -webkit-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 97%, #393939 97%);
 	background-image: -moz-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 97%, #393939 97%);
 }
@@ -106,6 +107,7 @@ div.dhx_modal_cover {
 
 .dhtmlx-info img, .dhtmlx_modal_box img{
 	float:left;
+	margin-left:-10px;
 	margin-right:20px;
 }
 
@@ -124,6 +126,7 @@ div.dhx_modal_cover {
 }
 .dhtmlx_popup_button div{
 	border:1px solid #FFF;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAMAAADaS4T1AAAAYFBMVEVwcHBtbW1ra2toaGhmZmZjY2NhYWFeXl5cXFxaWlpXV1dVVVVSUlJQUFBNTU1LS0tJSUlGRkZERERBQUE/Pz88PDw9PT0+Pj5AQEBCQkJDQ0NFRUVHR0dISEhKSkpMTEzqthaMAAAAMklEQVQImQXBhQ2AMAAAsOIMlwWH/8+kRSKVyRVKlVrQaHV6g9FktlhFm93hdLk9Xt8PIfgBvdUqyskAAAAASUVORK5CYII=);
 	background-image: -webkit-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 99%);
 	background-image: -moz-linear-gradient(top, #707070 1%, #3d3d3d 70%, #4c4c4c 99%);
 
@@ -135,6 +138,8 @@ div.dhx_modal_cover {
 }
 
 .dhtmlx_popup_button div:active, .dhtmlx_popup_button div:focus{
+	
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAMAAADaS4T1AAAAXVBMVEVwcHBubm5tbW1sbGxra2tpaWloaGhnZ2dmZmZlZWVjY2NiYmJhYWFgYGBfX19dXV1cXFxbW1taWlpZWVlXV1dWVlZVVVVUVFRTU1NRUVFQUFBPT09OTk5NTU1LS0tT9SY0AAAAMUlEQVQImQXBhQGAMAAAIGxnx2z9/00BiVQmVyhVakGj1ekNRpPZYhVtdofT5fZ4fT8hpwG05JjexgAAAABJRU5ErkJggg==);
 	background-image: -webkit-linear-gradient(top, #707070 1%, #4c4c4c 99%);
 	background-image: -moz-linear-gradient(top, #707070 1%, #4c4c4c 99%);	
 }
@@ -154,6 +159,7 @@ div.dhx_modal_cover {
 
 
 .dhtmlx-info, .dhtmlx-error{
+        font-size:14px;
 	color:#fff;
 	box-shadow: 0px 0px 4px #000;
 	margin-bottom:10px;
