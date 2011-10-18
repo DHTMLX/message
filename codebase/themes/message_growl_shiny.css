@@ -108,8 +108,10 @@ div.dhx_modal_cover {
 
 .dhtmlx-info img, .dhtmlx_modal_box img{
 	float:left;
-	margin-left:-10px;
 	margin-right:20px;
+}
+.dhtmlx-info img{
+	margin-left:-10px;
 }
 
 .dhtmlx-alert-error .dhtmlx_popup_title, .dhtmlx-confirm-error .dhtmlx_popup_title{
