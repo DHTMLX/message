@@ -43,13 +43,13 @@
 				"Simple and Elegant",
 				"Just 3kb (gziped)",
 				"Easy customizable",
-				"Different styles",
+				{ type:"error", text:"Different styles"},
 				"FF, Chrome, Safari, Opera, IE7+",
 				"MIT license",
 				{ expire:-1, text:"Check other <a href='http://dhtmlx.com'>dhtmlx</a> products" }
 			];
 			function show_message(){
-				dhtmlx.message(lines[count%6]);
+				dhtmlx.message(lines[count%7]);
 				count++;
 			};
 			
