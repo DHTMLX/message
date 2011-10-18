@@ -106,6 +106,8 @@ div.dhx_modal_cover {
 .dhtmlx-info img, .dhtmlx_modal_box img{
 	float:left;
 	margin-right:20px;
+}
+.dhtmlx-info img{
 	margin-left:-10px;
 }
 
