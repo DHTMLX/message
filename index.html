@@ -1,16 +1,73 @@
-<!DOCTYPE html>
+
+	<!DOCTYPE html>
 <html lang='en'>
 	<head>
 		<title>Message library</title>
 		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 		<!--[if lt IE 9]><script type='text/javascript' src='assets/javascript/html5.js'></script><![endif]-->
 		<script type='text/javascript' src='assets/javascript/prettify.js'></script>
-    <script type='text/javascript' src='codebase/message.compressed.js'></script>
-    <link rel='stylesheet' type='text/css' href='codebase/message.compressed.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/skeleton/stylesheets/base.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/skeleton/stylesheets/skeleton.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/prettify.css' />
 		<link rel='stylesheet' type='text/css' href='assets/css/style.css' />
+
+
+
+		<script type='text/javascript' src='./codebase/message.compressed.js'></script>
+
+		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_default.css" title="Default">
+		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_growl_dark.css" title="Growl - dark">
+		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_growl_shiny.css" title="Growl - shiny">
+		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_solid.css" title="Solid">
+		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_skyblue.css" title="SkyBlue">
+		<style type="text/css">
+			.dhtmlx-image{
+				line-height:30px;
+			}
+			legend{ color:white; font-weight:bold;}
+			select{ color: black; }
+		</style>
+		<script type="text/javascript">
+			function setActiveStyleSheet(title){
+				var links = document.getElementsByTagName("link");
+				for (var i = 0; i < links.length; i++){
+					if (links[i].getAttribute("title"))
+						links[i].disabled = (links[i].getAttribute("title") != title);
+				}
+			}
+			setActiveStyleSheet("Default")
+
+
+			var count = 0;
+			var lines = [
+				"Simple and Elegant",
+				"Just 3kb (gziped)",
+				"Easy customizable",
+				"Different styles",
+				"FF, Chrome, Safari, Opera, IE7+",
+				"MIT license",
+				{ expire:-1, text:"Check other <a href='http://dhtmlx.com'>dhtmlx</a> products" }
+			];
+			function show_message(){
+				dhtmlx.message(lines[count%6]);
+				count++;
+			};
+			
+
+			function rich_confirm(){
+				dhtmlx.confirm("<img src='assets/alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+			}
+			function rich_alert(){
+				dhtmlx.alert("<img src='assets/alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+			}
+			function rich_message(){
+				dhtmlx.message({
+					text:"<img src='assets/alert_small.png'> Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a>",
+					expire:-1,
+					type:"image"
+				});
+			}
+		</script>
 	</head>
 	
 	<body onload='prettyPrint()'>
@@ -70,10 +127,39 @@ dhtmlx.alert("Download is completed.");
 			<div class='sixteen columns'>
 				<h3>See it in action</h3>
         <br>
-		<div><input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'>
-        	 <input type='button' value='Show message with custom style' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'> </div>
-        <div><input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'>
-        	 <input type='button' value='Show confirm' onclick='dhtmlx.confirm("Was it simple?")'>  </div>
+        <fieldset>
+		<legend>Skin</legend>
+		<select onchange="setActiveStyleSheet(this.value);">
+			<option>Default</option>
+			<option>Growl - dark</option>
+			<option>Growl - shiny</option>
+			<option>Solid</option>
+			<option>SkyBlue</option>
+		</select>
+		</fieldset>
+
+<fieldset>
+		<legend>Message</legend>
+		<input type='button' value='Show message' onclick='dhtmlx.message("You have pressed the button!")'> 
+		<input type='button' value='Show styled message' onclick='dhtmlx.message({ type:"error", text:"You have pressed the <br> CRITICAL button!" })'>
+		<input type='button' value='Show rich content' onclick='rich_message();'>
+	</fieldset>
+
+	<fieldset>
+		<legend>Alert</legend>
+		<input type='button' value='Show alert' onclick='dhtmlx.alert("Simple!")'>
+		<input type='button' value='Show alert with title' onclick='dhtmlx.alert({title:"The result", text:"Done!"})'>
+		<input type='button' value='Show styled alert' onclick='dhtmlx.alert({type:"alert-error", title:"The result", text:"Done!"})'>
+		<input type='button' value='Show rich content' onclick='rich_alert();'>
+	</fieldset>
+
+	<fieldset>
+		<legend>Confirm</legend>
+		<input type='button' value='Show confirm' onclick='dhtmlx.confirm("Simple?")'>
+		<input type='button' value='Show confirm with title' onclick='dhtmlx.confirm({ title: "The question", text:"Was it simple?"})'>
+		<input type='button' value='Show styled confirm' onclick='dhtmlx.confirm({type:"confirm-error", title:"The question", text:"Was it simple?"})'>
+		<input type='button' value='Show rich content' onclick='rich_confirm();'>
+	</fieldset>
 
 			</div>
 		</div>
@@ -95,5 +181,10 @@ dhtmlx.alert("Download is completed.");
 		</footer>
 		
 		<a href='https://github.com/DHTMLX/message' class='github-ribbon'><img src='assets/images/github-ribbons/red.png' /></a>
+		<script type="text/javascript">
+			dhtmlx.message.expire = 8000;
+			window.setInterval(show_message, 3500);
+			show_message();
+			</script>
 	</body>
 </html>
