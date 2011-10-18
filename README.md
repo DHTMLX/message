@@ -5,32 +5,26 @@ Custom notifications, alerts, confirmations
 
 This library was extracted from code of [DHTMLX suite][dhtmlx].
 
-Library can be used under terms of [MIT license][mit] (basically **free**) .
+- Library can be used under terms of [MIT license][mit] (basically **free**) .
+- Only **3kb** gzipped, without external dependencies.
+- Works in FF, Chrome, Safari (including iPhone), Opera, IE7+
 
-Only **3kb** gzipped, without external dependencies.
-
-Works in FF, Chrome, Safari (including iPhone), Opera, IE7+
+Live samples can be checked at [http://dhtmlx.github.com/message/][message]
 
 Supported message types
 -----------------------
 
-jsMessage offers 7 message window variations at your disposal (3 main types and a few subtypes):
+jsMessage offers 3 variations at your disposal:
 
 - alert
-  - alert (default)
-  - alert-warning
-  - alert-error
 - confirm
- - confirm (default)
- - confirm-warning
- - confirm-error
-- notice
+- notification ( message )
 
 
 How to use
 -----------
 
-The type (subtype) of the message window is specified through the parameter type. The default value is notice.
+The type (subtype) of the message window is specified through the parameter type. The default value is "message".
 
 ```javascript
 	dhtmlx.message({ 
@@ -88,7 +82,7 @@ Options
 ```javascript
 	dhtmlx.message({
 			title: "Close",
-	                type: "alert-warning",
+	                type: "alert",
 			text: "You can't close this window!",
 			callback: function() {dhtmlx.alert("Test alert");}
 	})
@@ -137,7 +131,7 @@ Options
 	dhtmlx.confirm("ConfirmText");
 ```
 
-### Notice
+### Notification (message)
 
 - type - the subtype of the window or a custom css class. The default value for the window - 'alert'.
 - text - (string) the text of the window body.
@@ -162,7 +156,7 @@ Options
 Extra configuration
 -------------------
 
-Default delay of notices can be set as
+Default delay of notifications can be set as
 
 ```javascript
 	dhtmlx.message.expire = 4000; //time in milliseconds
@@ -175,5 +169,18 @@ Default position of notices can be set as
 	dhtmlx.message.position = "top";	 // possible values "top" or "bottom"
 ```
 
+### Alert subtypes
+
+For all kinds of messages, there are alert variations, which can be used for more important notifications
+
+```javascript
+	dhtmlx.message({ type:"error", "Critical error!"});
+	//or
+	dhtmlx.message({ type:"alert-error", "Critical error!"});
+	//or
+	dhtmlx.message({ type:"confirm-error", "Confirm self-destruction!"});
+```
+
 [dhtmlx]: http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message
+[message]: http://dhtmlx.github.com/message/
 [mit]: http://en.wikipedia.org/wiki/MIT_License
