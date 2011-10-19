@@ -22,10 +22,6 @@
 			font-size:10pt;
 			font-family:Tahoma;
 		}
-
-		.dhtmlx-image{
-			line-height:30px;
-		}
 	</style>
 	<script type="text/javascript">
 	function setActiveStyleSheet(title){
@@ -93,18 +89,16 @@
 		show_message();
 	window.setInterval(show_message, 500);
 
-
 	function rich_confirm(){
-		dhtmlx.confirm("<img src='alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+		dhtmlx.confirm("<img src='alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.");
 	}
 	function rich_alert(){
-		dhtmlx.alert("<img src='alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+		dhtmlx.alert("<img src='alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.");
 	}
 	function rich_message(){
 		dhtmlx.message({
-			text:"<img src='alert_small.png'> Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a>",
-			expire:-1,
-			type:"image"
+			text:"<img src='alert_small.png'> Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a><br/><br/> You can use any type of html content here - links, images, etc.",
+			expire:-1
 		});
 	}
 	</script>
