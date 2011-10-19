@@ -20,13 +20,6 @@
 		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_growl_shiny.css" title="Growl - shiny">
 		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_solid.css" title="Solid">
 		<link rel="stylesheet" type="text/css" href="./codebase/themes/message_skyblue.css" title="SkyBlue">
-		<style type="text/css">
-			.dhtmlx-image{
-				line-height:30px;
-			}
-			legend{ color:white; font-weight:bold;}
-			select{ color: black; }
-		</style>
 		<script type="text/javascript">
 			function setActiveStyleSheet(title){
 				var links = document.getElementsByTagName("link");
@@ -55,16 +48,15 @@
 			
 
 			function rich_confirm(){
-				dhtmlx.confirm("<img src='assets/alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+				dhtmlx.confirm("<img src='assets/alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.");
 			}
 			function rich_alert(){
-				dhtmlx.alert("<img src='assets/alert_medium.png'><strong>Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a></strong><br><br><div style='text-align:left;'>Meltdown is a term generally referring to a nuclear meltdown or the melting of a nuclear-reactor.</div>");
+				dhtmlx.alert("<img src='assets/alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.");
 			}
 			function rich_message(){
 				dhtmlx.message({
-					text:"<img src='assets/alert_small.png'> Core <a target='blank' href='http://en.wikipedia.org/wiki/Meltdown'>mealtdown!</a>",
-					expire:-1,
-					type:"image"
+					text:"<img src='assets/alert_small.png'> Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a><br/><br/> You can use any type of html content here - links, images, etc.",
+					expire:-1
 				});
 			}
 		</script>
@@ -76,7 +68,7 @@
 				<div class='nine columns alpha'>
 					<h1>js Message </h1>
 					<h2>Custom notifications, alerts, confirmations</h2>
-					<p>This library was extracted from the code of <a class="dhtmlx" href='http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message'> DHTMLX suite </a>.<br> The library can be used under terms of <strong class="dhtmlx">MIT</strong> license. (basically free)<br>
+					<p>This library was extracted from the code of <a class="dhtmlx" href='http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message'> DHTMLX suite</a>.<br> The library can be used under terms of <strong class="dhtmlx">MIT</strong> license (basically free).<br>
 					Only <strong class="dhtmlx">3kb</strong> gzipped, without external dependencies.</p>
 				</div>
 				
