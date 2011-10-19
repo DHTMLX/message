@@ -5,7 +5,7 @@ Custom notifications, alerts, confirmations
 
 This library was extracted from code of [DHTMLX suite][dhtmlx].
 
-- Library can be used under terms of [MIT license][mit] (basically **free**) .
+- Library can be used under terms of [MIT license][mit] (basically **free**).
 - Only **3kb** gzipped, without external dependencies.
 - Works in FF, Chrome, Safari (including iPhone), Opera, IE7+
 
@@ -99,6 +99,8 @@ Options
 	dhtmlx.alert("someText");
 ```
 
+Both alert and confirm blocks keyboard input while active. Pressing SPACE or ENTER will close message with positive result. Pressing ESC will close message with negative result. (you can use dhtmlx.message.keyboard = false; to disable this behavior)
+
 ### Confirm
 
 - title - (string) the text of the header (by default, 'Alert').
@@ -167,6 +169,13 @@ Default position of notices can be set as
 
 ```javascript
 	dhtmlx.message.position = "top";	 // possible values "top" or "bottom"
+```
+
+
+Interaction with alert and confirm from keyboard can be disabled by 
+
+```javascript
+	dhtmlx.message.keyboard = false;	 // possible values "top" or "bottom"
 ```
 
 ### Alert subtypes

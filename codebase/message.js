@@ -2,7 +2,34 @@ if(!window.dhtmlx)
 	window.dhtmlx = {};
 
 (function(){
-
+	var _dhx_msg_cfg = null;
+	function callback(config, result){
+			var usercall = config.callback;
+			modality(false);
+			config.box.parentNode.removeChild(config.box);
+			_dhx_msg_cfg = box = config.box = null;
+			if (usercall)
+				usercall(result);
+	}
+	function modal_key(e){
+		if (_dhx_msg_cfg){
+			var code = e.which||event.keyCode;
+			if (dhtmlx.message.keyboard){
+				if (code == 13 || code == 32)
+					callback(_dhx_msg_cfg, true);
+				if (code == 27)
+					callback(_dhx_msg_cfg, false);
+			}
+			if (e.preventDefault)
+				e.preventDefault();
+			return !(e.cancelBubble = true);
+		}
+	};
+	if (document.attachEvent)
+		document.attachEvent("onkeydown", modal_key);
+	else
+		document.addEventListener("keydown", modal_key);
+		
 	function modality(mode){
 		if(!modality.cover){
 			modality.cover = document.createElement("DIV");
@@ -32,7 +59,7 @@ if(!window.dhtmlx)
 		message.onclick = function(){
 			t.hide(text.id);
 			text = null;
-		}
+		};
 
 		if (t.position == "bottom" && t.area.firstChild)
 			t.area.insertBefore(message,t.area.firstChild);
@@ -65,25 +92,25 @@ if(!window.dhtmlx)
 		inner += '</div>';
 		box.innerHTML = inner;
 
+
+
 		box.onclick = function(e){
 			e = e ||event;
 			var source = e.target || e.srcElement;
 			if (!source.className) source = source.parentNode;
-			if (source.className == "dhtmlx_popup_button"){
-				if (config.callback)
-					config.callback.call(window, source.getAttribute("result") == "true");
-				modality(false);
-				box.parentNode.removeChild(box);
-				box = null;
-			}
+			if (source.className == "dhtmlx_popup_button")
+				callback(config, source.getAttribute("result") == "true");
 		};
+		config.box = box;
+		_dhx_msg_cfg = config;
 
-		modality(true);
+		modality(true,box);
 		document.body.appendChild(box);
 		var x = Math.abs(Math.floor(((window.innerWidth||document.documentElement.offsetWidth) - box.offsetWidth)/2));
 		var y = Math.abs(Math.floor(((window.innerHeight||document.documentElement.offsetHeight) - box.offsetHeight)/2));
 		box.style.top = y+'px';
 		box.style.left = x+'px';
+		box.focus();
 	}
 
 	function _popupButtonClick(config, param){
@@ -148,6 +175,7 @@ if(!window.dhtmlx)
 	t.seed = (new Date()).valueOf();
 	t.uid = function(){return t.seed++;};
 	t.expire = 4000;
+	t.keyboard = true;
 	t.position = "top";
 	t.pull = {};
 	t.timers = {};
