@@ -66,6 +66,13 @@ a:visited {
 	color: #0075B6;
 }
 
+legend{
+	color:#DDD; font-weight:normal;
+}
+select{
+	color:#222;
+}
+
 a:hover {
 	text-decoration: underline;
 }
@@ -145,23 +152,27 @@ a.download-button span {
 }
 
 code {
-	margin-top: 15px;
-	min-height: 220px;
-	border: 3px solid #FFFFFF;
-	background-color: #CCCC99;
-	display: block;
-	padding: 20px;
-	font-family: monospace;
-	-webkit-box-shadow: 3px 3px 5px #000000;
-	-moz-box-shadow: 3px 3px 5px #000000;
-	box-shadow: 3px 3px 5px #000000;
-	overflow-x: auto;
+	
 }
 
 pre.prettyprint {
 	border: 0;
 	padding: 0;
 	margin: 0;
+
+	margin-top: 15px;
+	min-height: 220px;
+	border: 3px solid #FFFFFF;
+	background-color: #CCCC99;
+	
+	padding: 20px;
+	font-family: monospace;
+	-webkit-box-shadow: 3px 3px 5px #000000;
+	-moz-box-shadow: 3px 3px 5px #000000;
+	box-shadow: 3px 3px 5px #000000;
+	overflow-x: auto;
+
+	
 }
 
 img.repo-author-logo {

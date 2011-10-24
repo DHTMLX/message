@@ -28,7 +28,7 @@ if(!window.dhtmlx)
 	if (document.attachEvent)
 		document.attachEvent("onkeydown", modal_key);
 	else
-		document.addEventListener("keydown", modal_key);
+		document.addEventListener("keydown", modal_key, false);
 		
 	function modality(mode){
 		if(!modality.cover){
