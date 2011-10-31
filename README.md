@@ -14,12 +14,12 @@ Live samples can be checked at [http://dhtmlx.github.com/message/][message]
 Supported message types
 -----------------------
 
-jsMessage offers 3 variations at your disposal:
+jsMessage offers 4 variations at your disposal:
 
 - alert
 - confirm
 - notification ( message )
-
+- modalbox
 
 How to use
 -----------
@@ -44,8 +44,13 @@ or, you can use separate methods
 	dhtmlx.alert({
 	    title:"Alert",
 	    type:"alert-error",
-	    text:"You can't do this"
+	    text:"You can do this"
 	});
+	//or
+	dhtmlx.modalbox({
+	    title:"Settings",
+	    text:"Abstract popup"
+	});	
 ```
 
 Styling
@@ -76,6 +81,9 @@ Options
 - text - (string) the text of the window body.
 - ok - (string) the text of the 'Ok' button.
 - callback - (function) the function called on button click
+- position - for now support only one value "top", any other value will result in center align
+- width - width of the modal box ( samples "100px", "50%")
+- height - height of the modal box 
 
 **Full form**
 
@@ -104,11 +112,14 @@ Both alert and confirm blocks keyboard input while active. Pressing SPACE or ENT
 ### Confirm
 
 - title - (string) the text of the header (by default, 'Alert').
-- type - the subtype of the window or a custom css class. The default value for the window - 'alert'.
+- type - the subtype of the window or a custom css class
 - text - (string) the text of the window body.
 - ok - (string) the text of the 'Ok' button.
 - cancel - (string) the text of the 'Cancel' button.
 - callback - (function) the function called on button click. Receives 'true' or 'false' as the parameter (subject to the clicked button).
+- position - for now support only one value "top", any other value will result in center align
+- width - width of the modal box ( samples "100px", "50%")
+- height - height of the modal box 
 
 **Full form**
 
@@ -132,6 +143,84 @@ Both alert and confirm blocks keyboard input while active. Pressing SPACE or ENT
 ```javascript
 	dhtmlx.confirm("ConfirmText");
 ```
+
+### Confirm
+
+- title - (string) the text of the header (by default, 'Alert').
+- type - the subtype of the window or a custom css class
+- text - (string) the text of the window body.
+- ok - (string) the text of the 'Ok' button.
+- cancel - (string) the text of the 'Cancel' button.
+- callback - (function) the function called on button click. Receives 'true' or 'false' as the parameter (subject to the clicked button).
+- buttons - array of labels, each one will be converted to the button ( much like multi-button confirm ). Callback function will receive index of pressed button ( 0 - for first button, 1 - for second button and etc. )
+- position - for now support only one value "top", any other value will result in center align
+- width - width of the modal box ( samples "100px", "50%")
+- height - height of the modal box 
+- content - can be used instead of text, defines html element (or its ID) which will be shown inside of a popup
+
+**Examples**
+
+```javascript
+	dhtmlx.modalbox({
+		title:"Settings"
+		text: " ... html code here... ",
+		buttons:["Save", "Defaults", "Cancel"],
+		callback:process_result
+	});
+```
+
+function returns the html container of the box which can be used for some actions
+
+```javascript
+	var box = dhtmlx.modalbox(...);
+	box.getElementsByTagName("input")[0].focus();
+	...
+	dhtmlx.modalbox.hide(box); //hide popup  
+```
+
+####  Closing modal box
+
+There are 3 way to close modal box 
+
+- call dhtmlx.modalbox.hide(box) - where "box" is result of dhtmlx.modalbox command
+- call dhtmlx.modalbox.hide(node) - where node - any html node in the box (allows to create "close" links easily)
+- click on any button, which was defined through "buttons" property
+       
+```javascript
+	var box = dhtmlx.modalbox({
+		text:"<a href='#' onclick='dhtmlx.modalbox.hide(this)'>Click to close<a>"
+	});
+```
+
+
+#### Custom buttons
+
+You can place a custom button in the popup, which is styled exactly as default message buttons. To do so you need to place the next html snippet
+
+```javascript
+	var box = dhtmlx.modalbox({
+		text:"<span class='dhtmlx_button'><input type='button' value='Press me'></span>"
+	});
+```
+
+#### Content reusage
+
+Instead of setting html text you can place any html container on the page in the modalbox
+
+```html
+	<div id='mycontent'>Some form here </div>
+```
+
+```javascript
+	var box = dhtmlx.modalbox(content:"mycontent");
+```
+
+after box will be closed, you can reopen it by 
+
+```javascript
+	dhtmlx.modalbox(box);
+```
+
 
 ### Notification (message)
 
