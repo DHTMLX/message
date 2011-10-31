@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_default.css">
+	<style type="text/css">
+		body, html {
+			height:100%;
+		}
+		input.inform{
+			width:220px;
+			margin-left:20px;
+		}
+		textarea.inform{
+			width:220px;
+			height:50px;
+			margin-left:20px;
+		}
+		#form_in_box div{
+			text-align:left;
+		}
+		.dhtmlx_button{
+			margin-top:10px;
+		}
+	</style>
+</head>
+<body>
+	Create once, use multiple times
+
+
+	<input type='button' value='Show form' onclick="dhtmlx.modalbox(myform)"><br>
+	<div id='form_in_box'>
+		<div><label> Input width <input class='inform' type='text'></label></div>
+		<div><label> Input height <input class='inform' type='text'></label></div>
+		<div><label> Input details <textarea class='inform'></textarea></label></div>
+		<div>
+			<span class='dhtmlx_button'>
+				<input type='button' value='save' onclick='save_callback(this)' style='width:250px;'></span>
+			</label>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var myform = dhtmlx.modalbox({ content:"form_in_box", hidden:true });
+		function save_callback(box){
+			dhtmlx.message("Saving...");
+			dhtmlx.modalbox.hide(box);
+		}
+	</script>
+</body>
+</html>

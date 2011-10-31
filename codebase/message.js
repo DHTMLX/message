@@ -76,8 +76,7 @@ if(!window.dhtmlx)
 
 		return text.id;
 	}
-
-	function _createBox(config, ok, cancel){
+	function _boxStructure(config, ok, cancel){
 		var box = document.createElement("DIV");
 		box.className = " dhtmlx_modal_box dhtmlx-"+config.type;
 		box.setAttribute("dhxbox", 1);
@@ -90,7 +89,7 @@ if(!window.dhtmlx)
 			box.style.height = config.height;
 		if (config.title)
 			inner+='<div class="dhtmlx_popup_title">'+config.title+'</div>';
-		inner+='<div class="dhtmlx_popup_text"><span>'+config.text+'</span></div><div  class="dhtmlx_popup_controls">';
+		inner+='<div class="dhtmlx_popup_text"><span>'+(config.content?'':config.text)+'</span></div><div  class="dhtmlx_popup_controls">';
 		if (ok)
 			inner += button(config.ok || "OK", true);
 		if (cancel)
@@ -102,7 +101,12 @@ if(!window.dhtmlx)
 		inner += '</div>';
 		box.innerHTML = inner;
 
-
+		if (config.content){
+			var node = config.content;
+			if (typeof node == "string") 
+				node = document.getElementById(node)
+			box.childNodes[config.title?1:0].appendChild(node);
+		}
 
 		box.onclick = function(e){
 			e = e ||event;
@@ -118,7 +122,13 @@ if(!window.dhtmlx)
 		if (ok||cancel)
 			_dhx_msg_cfg = config;
 
-		modality(true);
+		return box;
+	}
+	function _createBox(config, ok, cancel){
+		var box = config.tagName ? config : _boxStructure(config, ok, cancel);
+		
+		if (!config.hidden)
+			modality(true);
 		document.body.appendChild(box);
 		var x = Math.abs(Math.floor(((window.innerWidth||document.documentElement.offsetWidth) - box.offsetWidth)/2));
 		var y = Math.abs(Math.floor(((window.innerHeight||document.documentElement.offsetHeight) - box.offsetHeight)/2));
@@ -127,8 +137,11 @@ if(!window.dhtmlx)
 		else
 			box.style.top = y+'px';
 		box.style.left = x+'px';
-		
+
 		box.focus();
+		if (config.hidden)
+			dhtmlx.modalbox.hide(box);
+
 		return box;
 	}
 
