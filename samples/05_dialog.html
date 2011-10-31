@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_default.css">
+	<style type="text/css">
+		body, html {
+			height:100%;
+		}
+		input.inform{
+			width:220px;
+			margin-left:20px;
+		}
+		textarea.inform{
+			width:220px;
+			height:50px;
+			margin-left:20px;
+		}
+		#form_in_box div{
+			text-align:left;
+		}
+		.dhtmlx_button{
+			margin-top:10px;
+		}
+	</style>
+</head>
+<body>
+	<input type='button' value='Custom sizes, closing through link' onclick="boxA()"><br>
+	<input type='button' value='Top position, buttons' onclick="boxB()"><br>
+	<input type='button' value='Form in the box, custom button' onclick="boxC()"><br>
+
+	<input type='button' value='Custom styles' onclick="boxD()"><br>
+
+	<script type="text/javascript">
+	function boxA(){
+		dhtmlx.modalbox({ 
+			title:"Configuration", 
+			text:"Height, widht and position can be redeined<br><br> You can use code like <div><code>onclick='dhtmlx.modalbox.hide(this)'</code></div> to close a modal box <br/><br/> <a href='#' onclick='dhtmlx.modalbox.hide(this)'>click to close</a>",
+			width:"450px",
+			height:"300px"
+		});
+	}
+	function boxB(){
+		dhtmlx.modalbox({ 
+			text:"Some text here",
+			width:"450px",
+			position:"top",
+			buttons:["Ignore", "Confirm", "Deny"],
+			callback:function(index){
+				dhtmlx.message("Button "+index+" was pressed")
+			}
+		});
+	}
+	function boxC(){
+		var box = dhtmlx.modalbox({ 
+			title:"Configuration", 
+			text:"<div id='form_in_box'><div><label> Input width <input class='inform' type='text'></label></div><div><label> Input height <input class='inform' type='text'></label></div><div><label> Input details <textarea class='inform'></textarea></label></div><div><span class='dhtmlx_button'><input type='button' value='save' onclick='save_callback(this)' style='width:250px;'></span></label></div></div>",
+			width:"300px"
+		});
+		//timeout is necessary only in IE
+		setTimeout(function(){
+			box.getElementsByTagName("input")[0].focus();	
+		},1);
+		
+
+	}
+	function save_callback(box){
+		dhtmlx.message("Saving...");
+		dhtmlx.modalbox.hide(box);
+	}
+
+	function boxD(){
+		dhtmlx.modalbox({ 
+			type:"alert-error",
+			title:"Critical error", 
+			text:"<img src='alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.",
+			buttons:["Ok"]
+		});
+	}
+	boxC();
+	</script>	
+</body>
+</html>
