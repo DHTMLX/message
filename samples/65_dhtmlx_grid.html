@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Message - info</title>
+
+	<script type="text/javascript" src='./dhtmlx/codebase/dhtmlxcommon.js'></script>
+	<script type="text/javascript" src='./dhtmlx/codebase/dhtmlxcontainer.js'></script>
+	<script type="text/javascript" src='./dhtmlx/codebase/dhtmlxgrid.js'></script>
+	<script type="text/javascript" src='./dhtmlx/codebase/dhtmlxgridcell.js'></script>
+	<link rel="stylesheet" type="text/css" href="./dhtmlx/codebase/dhtmlxgrid.css">
+	<link rel="stylesheet" type="text/css" href="./dhtmlx/codebase/skins/dhtmlxgrid_dhx_skyblue.css">
+
+	<script type="text/javascript" src='./dhtmlx/codebase/dhtmlxtoolbar.js'></script>
+	<link rel="stylesheet" type="text/css" href="./dhtmlx/codebase/skins/dhtmlxtoolbar_dhx_skyblue.css">
+
+
+
+	<script type="text/javascript" src='../codebase/message.js'></script>
+	<link rel="stylesheet" type="text/css" href="../codebase/themes/message_default.css">
+	<style type="text/css">
+		body, html {
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var myform = dhtmlx.modalbox({ 
+			title:"Books selling, March 2011",
+			content:true,
+			buttons:["Close"],
+			width:"600px",
+			height:"400px"
+		});
+		var grid = myform.attachGrid();
+		grid.setImagePath("./dhtmlx/codebase/imgs/");
+		grid.setSkin("dhx_skyblue");
+		grid.load("dhtmlx/data/grid.xml");
+
+		var toolbar = myform.attachToolbar();
+		toolbar.setIconPath("dhtmlx/data/icons/");
+		toolbar.loadXML("dhtmlx/data/toolbar.xml");
+	</script>
+
+	<input type="button" onclick='dhtmlx.modalbox(myform);' value='Show Grid'>
+</body>
+</html>
