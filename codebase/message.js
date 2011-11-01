@@ -7,7 +7,7 @@ if(!window.dhtmlx)
 			var usercall = config.callback;
 			modality(false);
 			config.box.parentNode.removeChild(config.box);
-			_dhx_msg_cfg = box = config.box = null;
+			_dhx_msg_cfg = box = null;
 			if (usercall)
 				usercall(result);
 	}
@@ -102,10 +102,17 @@ if(!window.dhtmlx)
 		box.innerHTML = inner;
 
 		if (config.content){
-			var node = config.content;
-			if (typeof node == "string") 
-				node = document.getElementById(node)
-			box.childNodes[config.title?1:0].appendChild(node);
+			var container = box.childNodes[config.title?1:0];
+			if (config.content === true){
+				var cont = new dhtmlXContainer(box);
+				cont.setContent(container);
+			} else {
+				var node = config.content;
+				if (typeof node == "string") 
+					node = document.getElementById(node);
+				container.appendChild(node);
+			}
+			config.content = container;
 		}
 
 		box.onclick = function(e){
@@ -119,13 +126,18 @@ if(!window.dhtmlx)
 			}
 		};
 		config.box = box;
+		box.config = config;
 		if (ok||cancel)
 			_dhx_msg_cfg = config;
 
 		return box;
 	}
 	function _createBox(config, ok, cancel){
-		var box = config.tagName ? config : _boxStructure(config, ok, cancel);
+		if (config.tagName){
+			var box = config;
+			config = box.config;
+		} else
+			var box = _boxStructure(config, ok, cancel);
 		
 		if (!config.hidden)
 			modality(true);
@@ -141,6 +153,11 @@ if(!window.dhtmlx)
 		box.focus();
 		if (config.hidden)
 			dhtmlx.modalbox.hide(box);
+		else if (box.adjustContent && config.content){
+			var prev = config.content.previousSibling;
+			var next = config.buttons?config.content.nextSibling:null;
+			box.adjustContent(box, 0,0,true,(prev?prev.offsetHeight:0) + (next?(next.offsetHeight+25):0));
+		}
 
 		return box;
 	}
@@ -185,7 +202,7 @@ if(!window.dhtmlx)
 		text = box_params.apply(this, arguments);
 		text.type = text.type || "alert";
 		return boxPopup(text);
-	}
+	};
 	dhtmlx.modalbox.hide = function(node){
 		while (node && node.getAttribute && !node.getAttribute("dhxbox"))
 			node = node.parentNode;
@@ -193,7 +210,7 @@ if(!window.dhtmlx)
 			node.parentNode.removeChild(node);
 			modality(false);
 		}
-	}
+	};
 	var t = dhtmlx.message = function(text, type, expire, id){
 		text = params.apply(this, arguments);
 		text.type = text.type||"info";
