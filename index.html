@@ -69,7 +69,7 @@
 					<h1>js Message </h1>
 					<h2>Custom notifications, alerts, confirmations</h2>
 					<p>This library was extracted from the code of <a class="dhtmlx" href='http://dhtmlx.com/docs/products/dhtmlxSuite/index.shtml?message'> DHTMLX suite</a>.<br> The library can be used under terms of <strong class="dhtmlx">MIT</strong> license (basically free).<br>
-					Only <strong class="dhtmlx">3kb</strong> gzipped, without external dependencies.</p>
+					Only <strong class="dhtmlx">4kb</strong> gzipped, without external dependencies.</p>
 				</div>
 				
 				<div class='six columns offset-by-one omega'>
@@ -153,6 +153,14 @@ dhtmlx.alert("Download is completed.");
 		<input type='button' value='Show rich content' onclick='rich_confirm();'>
 	</fieldset>
 
+	<fieldset>
+		<legend>Modal Box</legend>
+		<input type='button' value='Custom sizes, closing through link' onclick="boxA()">
+		<input type='button' value='Top position, buttons' onclick="boxB()">
+		<input type='button' value='Form in the box, custom button' onclick="boxC()">
+		<input type='button' value='Custom styles' onclick="boxD()">
+	</fieldset>	
+
 			</div>
 		</div>
 		
@@ -172,11 +180,76 @@ dhtmlx.alert("Download is completed.");
 			</div>
 		</footer>
 		
-		<a href='https://github.com/DHTMLX/message' class='github-ribbon'><img src='assets/images/github-ribbons/red.png' /></a>
-		<script type="text/javascript">
+	<a href='https://github.com/DHTMLX/message' class='github-ribbon'><img src='assets/images/github-ribbons/red.png' /></a>
+
+	<style>
+		/*used in sample of form in modalbox, not necessary for normal lib usage*/
+		input.inform{
+			width:220px;
+			margin-left:20px;
+		}
+		textarea.inform{
+			width:220px;
+			height:50px;
+			margin-left:20px;
+		}
+		#form_in_box div{
+			text-align:left;
+		}
+		.dhtmlx_button{
+			margin-top:10px;
+		}
+	</style>
+	<script type="text/javascript">
 			dhtmlx.message.expire = 8000;
 			window.setInterval(show_message, 3500);
 			show_message();
-			</script>
+
+	function boxA(){
+		dhtmlx.modalbox({ 
+			title:"Configuration", 
+			text:"Height, widht and position can be redeined<br><br> You can use code like <div><code>onclick='dhtmlx.modalbox.hide(this)'</code></div> to close a modal box <br/><br/> <a href='#' onclick='dhtmlx.modalbox.hide(this)'>click to close</a>",
+			width:"450px",
+			height:"300px"
+		});
+	}
+	function boxB(){
+		dhtmlx.modalbox({ 
+			text:"Some text here",
+			width:"450px",
+			position:"top",
+			buttons:["Ignore", "Confirm", "Deny"],
+			callback:function(index){
+				dhtmlx.message("Button "+index+" was pressed")
+			}
+		});
+	}
+	function boxC(){
+		var box = dhtmlx.modalbox({ 
+			title:"Configuration", 
+			text:"<div id='form_in_box'><div><label> Input width <input class='inform' type='text'></label></div><div><label> Input height <input class='inform' type='text'></label></div><div><label> Input details <textarea class='inform'></textarea></label></div><div><span class='dhtmlx_button'><input type='button' value='save' onclick='save_callback(this)' style='width:250px;'></span></label></div></div>",
+			width:"250px"
+		});
+		//timeout is necessary only in IE
+		setTimeout(function(){
+			box.getElementsByTagName("input")[0].focus();	
+		},1);
+	}
+	function save_callback(box){
+		dhtmlx.message("Saving...");
+		dhtmlx.modalbox.hide(box);
+	}
+
+	function boxD(){
+		dhtmlx.modalbox({ 
+			type:"alert-error",
+			title:"Critical error", 
+			text:"<img src='assets/alert_medium.png'><strong>Need more <a target='blank' href='http://en.wikipedia.org/wiki/Coffee'>coffee!</a></strong><br/><br/> You can use any type of html content here - links, images, etc.",
+			buttons:["Ok"]
+		});
+	}
+
+
+	</script>
 	</body>
 </html>
