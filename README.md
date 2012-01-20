@@ -144,7 +144,7 @@ Both alert and confirm blocks keyboard input while active. Pressing SPACE or ENT
 	dhtmlx.confirm("ConfirmText");
 ```
 
-### Confirm
+### ModalBox
 
 - title - (string) the text of the header (by default, 'Alert').
 - type - the subtype of the window or a custom css class
