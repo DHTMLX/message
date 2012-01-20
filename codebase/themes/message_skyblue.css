@@ -131,7 +131,10 @@ div.dhx_modal_cover {
 	border-radius:6px;
 	font-size:15px;
 
-	color:#000; padding:0px; margin:0px; box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+
+	color:#000; padding:0px; margin:0px;
 	vertical-align:top;
 
 	height:28px;
