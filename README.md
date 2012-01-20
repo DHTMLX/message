@@ -6,7 +6,7 @@ Custom notifications, alerts, confirmations
 This library was extracted from code of [DHTMLX suite][dhtmlx].
 
 - Library can be used under terms of [MIT license][mit] (basically **free**).
-- Only **3kb** gzipped, without external dependencies.
+- Only **4kb** gzipped, without external dependencies.
 - Works in FF, Chrome, Safari (including iPhone), Opera, IE7+
 
 Live samples can be checked at [http://dhtmlx.github.com/message/][message]
