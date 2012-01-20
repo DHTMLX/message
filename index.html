@@ -196,9 +196,6 @@ dhtmlx.alert("Download is completed.");
 		#form_in_box div{
 			text-align:left;
 		}
-		#form_in_box input[type="button"]:hover{
-			background:#444444;
-		}
 		.dhtmlx_button{
 			margin-top:10px;
 		}
@@ -211,7 +208,7 @@ dhtmlx.alert("Download is completed.");
 	function boxA(){
 		dhtmlx.modalbox({ 
 			title:"Configuration", 
-			text:"Height, widht and position can be redeined<br><br> You can use code like <div><code>onclick='dhtmlx.modalbox.hide(this)'</code></div> to close a modal box <br/><br/> <a href='#' onclick='dhtmlx.modalbox.hide(this)'>click to close</a>",
+			text:"Height, widht and position can be redeined<br><br> You can use code like <div><code>onclick='dhtmlx.modalbox.hide(this)'</code></div> to close a modal box <br/><br/> <a href='#' onclick='dhtmlx.modalbox.hide(this); return false;'>click to close</a>",
 			width:"450px",
 			height:"300px"
 		});
@@ -230,7 +227,7 @@ dhtmlx.alert("Download is completed.");
 	function boxC(){
 		var box = dhtmlx.modalbox({ 
 			title:"Configuration", 
-			text:"<div id='form_in_box'><div><label> Input width <input class='inform' type='text'></label></div><div><label> Input height <input class='inform' type='text'></label></div><div><label> Input details <textarea class='inform'></textarea></label></div><div><span class='dhtmlx_button'><input type='button' value='save' onclick='save_callback(this)' style='width:250px;'></span></label></div></div>",
+			text:"<div id='form_in_box'><div><label> Input width <input class='inform' type='text'></label></div><div><label> Input height <input class='inform' type='text'></label></div><div><label> Input details <textarea class='inform'></textarea></label></div><div><span class='dhtmlx_button'><input type='button' value='Save' onclick='save_callback(this)' style='width:250px;'></span></label></div></div>",
 			width:"250px"
 		});
 		//timeout is necessary only in IE
