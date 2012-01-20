@@ -31,7 +31,7 @@
 	overflow:hidden;
 	display: inline-block;
 	min-width: 300px;
-	width: 300px !important;
+	width: 300px;
 	text-align: center;
 	position:fixed;
 

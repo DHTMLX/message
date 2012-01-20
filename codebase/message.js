@@ -24,7 +24,7 @@ if(!window.dhtmlx)
 				e.preventDefault();
 			return !(e.cancelBubble = true);
 		}
-	};
+	}
 	if (document.attachEvent)
 		document.attachEvent("onkeydown", modal_key);
 	else
@@ -40,8 +40,8 @@ if(!window.dhtmlx)
 		modality.cover.style.display = mode?"inline-block":"none";
 	}
 
-	function button(text, callback){
-		return "<div class='dhtmlx_popup_button' "+(callback?"result='true' ":"")+"><div>"+text+"</div></div>";
+	function button(text, result){
+		return "<div class='dhtmlx_popup_button' result='"+result+"' ><div>"+text+"</div></div>";
 	}
 
 	function info(text){
@@ -76,55 +76,83 @@ if(!window.dhtmlx)
 
 		return text.id;
 	}
-
-	function _createBox(config, ok, cancel){
+	function _boxStructure(config, ok, cancel){
 		var box = document.createElement("DIV");
 		box.className = " dhtmlx_modal_box dhtmlx-"+config.type;
+		box.setAttribute("dhxbox", 1);
 			
 		var inner = '';
+
+		if (config.width)
+			box.style.width = config.width;
+		if (config.height)
+			box.style.height = config.height;
 		if (config.title)
 			inner+='<div class="dhtmlx_popup_title">'+config.title+'</div>';
-		inner+='<div class="dhtmlx_popup_text"><span>'+config.text+'</span></div><div  class="dhtmlx_popup_controls">';
+		inner+='<div class="dhtmlx_popup_text"><span>'+(config.content?'':config.text)+'</span></div><div  class="dhtmlx_popup_controls">';
 		if (ok)
 			inner += button(config.ok || "OK", true);
 		if (cancel)
 			inner += button(config.cancel || "Cancel", false);
+		if (config.buttons){
+			for (var i=0; i<config.buttons.length; i++)
+				inner += button(config.buttons[i],i);
+		}
 		inner += '</div>';
 		box.innerHTML = inner;
 
-
+		if (config.content){
+			var node = config.content;
+			if (typeof node == "string") 
+				node = document.getElementById(node)
+			box.childNodes[config.title?1:0].appendChild(node);
+		}
 
 		box.onclick = function(e){
 			e = e ||event;
 			var source = e.target || e.srcElement;
 			if (!source.className) source = source.parentNode;
-			if (source.className == "dhtmlx_popup_button")
-				callback(config, source.getAttribute("result") == "true");
+			if (source.className == "dhtmlx_popup_button"){
+				result = source.getAttribute("result");
+				result = (result == "true")||(result == "false"?false:result);
+				callback(config, result);
+			}
 		};
 		config.box = box;
-		_dhx_msg_cfg = config;
+		if (ok||cancel)
+			_dhx_msg_cfg = config;
 
-		modality(true,box);
+		return box;
+	}
+	function _createBox(config, ok, cancel){
+		var box = config.tagName ? config : _boxStructure(config, ok, cancel);
+		
+		if (!config.hidden)
+			modality(true);
 		document.body.appendChild(box);
 		var x = Math.abs(Math.floor(((window.innerWidth||document.documentElement.offsetWidth) - box.offsetWidth)/2));
 		var y = Math.abs(Math.floor(((window.innerHeight||document.documentElement.offsetHeight) - box.offsetHeight)/2));
-		box.style.top = y+'px';
+		if (config.position == "top")
+			box.style.top = "-3px";
+		else
+			box.style.top = y+'px';
 		box.style.left = x+'px';
+
 		box.focus();
+		if (config.hidden)
+			dhtmlx.modalbox.hide(box);
+
+		return box;
 	}
 
-	function _popupButtonClick(config, param){
-		return function(){
-			t.hide(config.id);
-			if(typeof config.callback == "function")
-				config.callback(param);
-		};
-	}
 	function alertPopup(config){
-		var box = _createBox(config, true, false);
+		return _createBox(config, true, false);
 	}
 	function confirmPopup(config){
-		var box = _createBox(config, true, true);
+		return _createBox(config, true, true);
+	}
+	function boxPopup(config){
+		return _createBox(config);
 	}
 	function box_params(text, type, callback){
 		if (typeof text != "object"){
@@ -146,14 +174,26 @@ if(!window.dhtmlx)
 	dhtmlx.alert = function(){
 		text = box_params.apply(this, arguments);
 		text.type = text.type || "confirm";
-
-		alertPopup(text);
+		return alertPopup(text);
 	};
 	dhtmlx.confirm = function(){
 		text = box_params.apply(this, arguments);
 		text.type = text.type || "alert";
-		confirmPopup(text);
+		return confirmPopup(text);
 	};
+	dhtmlx.modalbox = function(){
+		text = box_params.apply(this, arguments);
+		text.type = text.type || "alert";
+		return boxPopup(text);
+	}
+	dhtmlx.modalbox.hide = function(node){
+		while (node && node.getAttribute && !node.getAttribute("dhxbox"))
+			node = node.parentNode;
+		if (node){
+			node.parentNode.removeChild(node);
+			modality(false);
+		}
+	}
 	var t = dhtmlx.message = function(text, type, expire, id){
 		text = params.apply(this, arguments);
 		text.type = text.type||"info";
@@ -162,10 +202,10 @@ if(!window.dhtmlx)
 		switch (subtype){
 			case "alert":
 				return alertPopup(text);
-			break;
 			case "confirm":
 				return confirmPopup(text);
-			break;
+			case "modalbox":
+				return boxPopup(text);
 			default:
 				return info(text);
 			break;
