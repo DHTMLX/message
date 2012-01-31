@@ -13,6 +13,7 @@ if(!window.dhtmlx)
 	}
 	function modal_key(e){
 		if (_dhx_msg_cfg){
+			e = e||event;
 			var code = e.which||event.keyCode;
 			if (dhtmlx.message.keyboard){
 				if (code == 13 || code == 32)
@@ -28,11 +29,13 @@ if(!window.dhtmlx)
 	if (document.attachEvent)
 		document.attachEvent("onkeydown", modal_key);
 	else
-		document.addEventListener("keydown", modal_key, false);
+		document.addEventListener("keydown", modal_key, true);
 		
 	function modality(mode){
 		if(!modality.cover){
 			modality.cover = document.createElement("DIV");
+			//necessary for IE only
+			modality.cover.onkeydown = modal_key;
 			modality.cover.className = "dhx_modal_cover";
 			document.body.appendChild(modality.cover);
 		}
@@ -137,6 +140,8 @@ if(!window.dhtmlx)
 		else
 			box.style.top = y+'px';
 		box.style.left = x+'px';
+		//necessary for IE only
+		box.onkeydown = modal_key;
 
 		box.focus();
 		if (config.hidden)
