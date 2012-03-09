@@ -107,7 +107,7 @@ if(!window.dhtmlx)
 		if (config.content){
 			var node = config.content;
 			if (typeof node == "string") 
-				node = document.getElementById(node)
+				node = document.getElementById(node);
 			box.childNodes[config.title?1:0].appendChild(node);
 		}
 
@@ -190,7 +190,7 @@ if(!window.dhtmlx)
 		text = box_params.apply(this, arguments);
 		text.type = text.type || "alert";
 		return boxPopup(text);
-	}
+	};
 	dhtmlx.modalbox.hide = function(node){
 		while (node && node.getAttribute && !node.getAttribute("dhxbox"))
 			node = node.parentNode;
@@ -198,7 +198,7 @@ if(!window.dhtmlx)
 			node.parentNode.removeChild(node);
 			modality(false);
 		}
-	}
+	};
 	var t = dhtmlx.message = function(text, type, expire, id){
 		text = params.apply(this, arguments);
 		text.type = text.type||"info";
