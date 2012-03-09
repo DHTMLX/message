@@ -7,7 +7,7 @@ if(!window.dhtmlx)
 			var usercall = config.callback;
 			modality(false);
 			config.box.parentNode.removeChild(config.box);
-			_dhx_msg_cfg = box = config.box = null;
+			_dhx_msg_cfg = config.box = null;
 			if (usercall)
 				usercall(result);
 	}
