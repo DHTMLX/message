@@ -108,6 +108,8 @@ if(!window.dhtmlx)
 			var node = config.content;
 			if (typeof node == "string") 
 				node = document.getElementById(node);
+			if (node.style.display == 'none')
+				node.style.display = "";
 			box.childNodes[config.title?1:0].appendChild(node);
 		}
 
