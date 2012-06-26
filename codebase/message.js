@@ -44,7 +44,8 @@ if(!window.dhtmlx)
 	}
 
 	function button(text, result){
-		return "<div class='dhtmlx_popup_button' result='"+result+"' ><div>"+text+"</div></div>";
+		var button_css = "dhtmlx_"+text.toLowerCase().replace(/ /g, "_")+"_button"; // dhtmlx_ok_button, dhtmlx_click_me_button
+		return "<div class='dhtmlx_popup_button "+button_css+"' result='"+result+"' ><div>"+text+"</div></div>";
 	}
 
 	function info(text){
@@ -117,7 +118,7 @@ if(!window.dhtmlx)
 			e = e ||event;
 			var source = e.target || e.srcElement;
 			if (!source.className) source = source.parentNode;
-			if (source.className == "dhtmlx_popup_button"){
+			if (source.className.split(" ")[0] == "dhtmlx_popup_button"){
 				result = source.getAttribute("result");
 				result = (result == "true")||(result == "false"?false:result);
 				callback(config, result);
