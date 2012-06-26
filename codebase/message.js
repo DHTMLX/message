@@ -118,7 +118,7 @@ if(!window.dhtmlx)
 			e = e ||event;
 			var source = e.target || e.srcElement;
 			if (!source.className) source = source.parentNode;
-			if (source.className == "dhtmlx_popup_button"){
+			if (source.className.split(" ")[0] == "dhtmlx_popup_button"){
 				result = source.getAttribute("result");
 				result = (result == "true")||(result == "false"?false:result);
 				callback(config, result);
