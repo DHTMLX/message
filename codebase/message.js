@@ -45,7 +45,7 @@ if(!window.dhtmlx)
 
 	function button(text, result){
 		var button_css = "dhtmlx_"+text.toLowerCase().replace(/ /g, "_")+"_button"; // dhtmlx_ok_button, dhtmlx_click_me_button
-		return "<div class='dhtmlx_popup_button "+button_css+"' result='"+result+"' ><div>"+text+"</div></div>";
+		return "<div class='dhtmlx_popup_button' result='"+result+"' ><div class='"+button_css+"'>"+text+"</div></div>";
 	}
 
 	function info(text){
