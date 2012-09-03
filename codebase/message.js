@@ -118,7 +118,7 @@ if(!window.dhtmlx)
 			var source = e.target || e.srcElement;
 			if (!source.className) source = source.parentNode;
 			if (source.className == "dhtmlx_popup_button"){
-				result = source.getAttribute("result");
+				var result = source.getAttribute("result");
 				result = (result == "true")||(result == "false"?false:result);
 				callback(config, result);
 			}
@@ -179,17 +179,17 @@ if(!window.dhtmlx)
 		return text;
 	}
 	dhtmlx.alert = function(){
-		text = box_params.apply(this, arguments);
+		var text = box_params.apply(this, arguments);
 		text.type = text.type || "confirm";
 		return alertPopup(text);
 	};
 	dhtmlx.confirm = function(){
-		text = box_params.apply(this, arguments);
+		var text = box_params.apply(this, arguments);
 		text.type = text.type || "alert";
 		return confirmPopup(text);
 	};
 	dhtmlx.modalbox = function(){
-		text = box_params.apply(this, arguments);
+		var text = box_params.apply(this, arguments);
 		text.type = text.type || "alert";
 		return boxPopup(text);
 	};
