@@ -7,6 +7,7 @@
 
 .dhtmlx-info{
 	min-width: 120px;
+	min-height:20px;
 	padding:4px 4px 4px 20px;
 	font-family:Tahoma;
 	z-index: 10000;
@@ -21,9 +22,12 @@
 }
 .dhtmlx-info.hidden{
 	height:0px;
-	padding:0px;
+	min-height: 0px;
+	padding-top:0px;
+	padding-bottom:0px;
 	border-width:0px;
-	margin:0px;
+	margin-top:0px;
+	margin-bottom:0px;
 	overflow:hidden;
 }
 
